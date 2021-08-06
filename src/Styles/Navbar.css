@@ -1,0 +1,23 @@
+.topnav{
+    background-color: rgb(247, 247, 247);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    height: 70px;
+}
+.nav{
+    padding-right: 10px;
+    float: right;
+    list-style-type: none;
+    display: inline-flex;
+    justify-content: space-evenly;
+    text-align: right;
+}
+.logo{
+    display: inline-flex;
+    padding-left: 40px;
+    margin: 10px;
+}
+.nav-item{
+    padding-right: 30px;
+}

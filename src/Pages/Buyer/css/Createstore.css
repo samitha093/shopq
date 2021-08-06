@@ -1,0 +1,87 @@
+.user-creatstore{
+    flex: 15;
+    width: 100%;
+    margin: 40px;
+    padding: 30px;
+    -webkit-box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24); 
+    box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24)
+}
+.moderninput{
+    width: 99%;
+    position: relative;
+    height: 80px;
+    overflow: hidden;
+}
+.moderninput input{
+    width: 100%;
+    height: 100%;
+    color:#595f6c;
+    padding-top: 20px;
+    border: none;
+    font-size:20px;
+    outline: none;
+}
+.moderninput label{
+    position:absolute;
+    bottom: 0px;
+    left:0%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid black;
+}
+.moderninput label::after {
+ content: "";
+ position: absolute;
+ left: 0px;
+ bottom: -1px;
+ height: 100%;
+ width:100%;
+ border-bottom: 4px solid #F39C12;
+ transform:translateX(-100%);
+ transition: transform  0.9s ease;
+}
+.content-moderninput{
+    position: absolute;
+    bottom: 5px;
+    left:0px;
+    transition:all 0.3s easy;
+}
+.moderninput input:focus + .label-moderninput .content-moderninput,
+.moderninput input:valid + .label-moderninput .content-moderninput{
+    transform: translateY(-150%);
+    font-size: 14px;
+    color: #F39C12;
+}
+.moderninput input:focus + .label-moderninput::after,
+.moderninput input:valid + .label-moderninput::after{
+    transform: translateX(0%);
+}
+.contat{
+    height: 100px;
+    display: inline;
+}
+.left{
+    width: 50%;
+    float: left;
+}
+.right{
+    width: 50%;
+    float: right;
+}
+.right-btn{
+    float: right;
+    padding:50px;
+}
+.button-o{
+    width: 100%;
+    padding: 15px 30px;
+    cursor: pointer;
+    display: block;
+    margin-top: 50px;
+    background: #F39C12;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: white;
+}

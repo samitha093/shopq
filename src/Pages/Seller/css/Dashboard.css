@@ -1,0 +1,49 @@
+.seller-dashboard{
+    flex: 15;
+    width: 100%;
+}
+.dashboardtop{
+    display: flex;
+    justify-content: space-between;
+}
+.dashboardItem{
+    flex: 1;
+    margin: 10px 40px;
+    padding: 30px;
+    border-radius: 10px;
+    max-height: 100px;
+    -webkit-box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24); 
+    box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24)
+}
+.dashboardContainer{
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+}
+.dashboardMoney{
+    font-size: 30px;
+    font-weight: 600;
+}
+.dashboardRate{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+.dashboardIcon{
+    color: rgb(0, 168, 22);
+    font-size: 20px;
+    display: none;
+}
+.dashboardSub{
+    font-size: 15px;
+    color: gray;
+}
+.dashboardgraph{
+    margin: 40px;
+    padding: 30px;
+    -webkit-box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24); 
+    box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24)
+}
+.chartTitle{
+    margin-bottom: 20px;
+}
