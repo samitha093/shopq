@@ -69,7 +69,7 @@ const Usersidebar = () => {
             storeuser : getusername()
         };
 
-        const url = 'http://localhost:5000/seller/login';
+        const url = 'https://shopqapi.herokuapp.com/seller/login';
         axios.post(url,getsellerstore)
             .then((res)=>{
                 swal.close();

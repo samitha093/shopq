@@ -75,7 +75,7 @@ const Sellersidebar = () => {
     async function seller_shop(){
         showLoading();
         //console.log(getusername());
-        axios.get('http://localhost:5000/seller/user/'+getusername())
+        axios.get('https://shopqapi.herokuapp.com/seller/user/'+getusername())
         .then((res)=>{
             //console.log(res.data.store);
             history.push("/store/"+res.data.store.storeid);
