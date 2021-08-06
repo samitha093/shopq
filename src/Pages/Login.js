@@ -50,7 +50,7 @@ const Login = () => {
         let useritem = {username:userName,password:password}
         setuserName("");
         setpassword("");
-        const url = 'http://localhost:5000/users/login';
+        const url = 'https://shopqapi.herokuapp.com/users/login';
         axios.post(url,useritem)
                 .then((res)=>{
                     swal.close();
@@ -77,7 +77,7 @@ const Login = () => {
             setr_username("");
             setr_password("");
             setr_cpassword("");
-            const url = 'http://localhost:5000/users/add';
+            const url = 'https://shopqapi.herokuapp.com/users/add';
             axios.post(url,registeruser)
                 .then((res)=>{
                     swal.close();

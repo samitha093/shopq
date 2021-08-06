@@ -12,7 +12,7 @@ const Store = () => {
     const [Product_data, setitem] = useState([]);
     useEffect(()=>{
         showLoading()
-      axios.get('http://localhost:5000/product/store/'+ id)
+      axios.get('https://shopqapi.herokuapp.com/product/store/'+ id)
             .then((res)=>{
                 //console.log(res1.data);
                 setitem(res.data);
