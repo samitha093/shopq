@@ -6,6 +6,7 @@ import '../Styles/Checkout.css';
 import { composeClasses, DataGrid } from '@material-ui/data-grid';
 import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom';
+import {getusername} from '../Session/Session';
 const Checkout = (props) => {
     const [checkoutproduct, setitems] = useState([]);
     const [Products, setitem] = useState([]);
@@ -129,7 +130,7 @@ const Checkout = (props) => {
             }
             const  order = {
                 store : Products[0].shop,
-                buyer : "",
+                buyer : getusername(),
                 status : "Pending",
                 product:item,
                 address:Address
