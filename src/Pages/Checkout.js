@@ -13,7 +13,7 @@ const Checkout = (props) => {
     const[Amount,setamount] = useState(0);
     const history = useHistory();
     useEffect(()=>{
-        //showLoading();
+        showLoading();
         setitems(props.location.state);
             if(props.location.state.items.length === 1){
                 showLoading();
@@ -112,6 +112,7 @@ const Checkout = (props) => {
         }
     ];
     async function pay_api() {
+        showLoading();
         if(Products.length === 1){
             //console.log(Products[0]);
             const  item = {
@@ -157,6 +158,7 @@ const Checkout = (props) => {
                             const url = 'https://shopqapi.herokuapp.com/product/update/'+ Products[0].id;
                             axios.post(url,itemupdate)
                             .then((res)=>{
+                                swal.close();
                                 swal({
                                     title: "Order successfully Placed  !",
                                     text: "Thank You",
@@ -169,6 +171,7 @@ const Checkout = (props) => {
                         })
                 })
                 .catch((err)=>{
+                    swal.close();
                     swal({
                         title: "Something went to wrong!",
                         text: "Please Login to your Account",
@@ -180,6 +183,7 @@ const Checkout = (props) => {
                 setCity("");
                 setDistrict("");  
         }else{
+            swal.close();
             swal({
                 title: "Something went to wrong!",
                 text: "Please try again later",
