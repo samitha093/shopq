@@ -181,7 +181,7 @@ const Checkout = (props) => {
         }else{
             swal({
                 title: "Something went to wrong!",
-                text: "Please Login to your Account",
+                text: "Please try again later",
                 icon: "error",
             });
         }
