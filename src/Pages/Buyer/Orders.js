@@ -12,7 +12,7 @@ function Orders() {
     const [items, setitem] = useState([]);
     useEffect(()=>{
         showLoading();
-        axios.get('http://localhost:8000/order/user/'+getusername())
+        axios.get('https://shopqapi.herokuapp.com/order/user/'+getusername())
         .then((res)=>{
             swal.close();
             //console.log(res.data.orders);

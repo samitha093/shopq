@@ -21,11 +21,6 @@ const Orders = () => {
                 .catch((err1)=>{
                     console.log(err1);
                     swal.close();
-                    swal({
-                        title: "Something went to wrong!",
-                        text: "Please try again later",
-                        icon: "error",
-                    });
                 })
         })
         .catch((err1)=>{
