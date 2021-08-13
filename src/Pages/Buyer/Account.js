@@ -20,7 +20,7 @@ function Account() {
         showLoading();
         setusername(getusername());
 
-        axios.get('http://localhost:8000/seller/user/'+getusername())
+        axios.get('https://shopqapi.herokuapp.com/seller/user/'+getusername())
             .then((res)=>{
                 swal.close();
                 console.log(res.data.store);
@@ -63,7 +63,7 @@ function Account() {
                 address : Address,
                 province : Province
             }
-            const url = 'http://localhost:8000/seller/update/'+ getusername();
+            const url = 'https://shopqapi.herokuapp.com/seller/update/'+ getusername();
             axios.post(url,seller)
             .then((res)=>{
                 swal({
@@ -95,7 +95,7 @@ function Account() {
                 username: username,
                 password: newpassword,
             }
-            const url = 'http://localhost:8000/users/update/'+ getusername();
+            const url = 'https://shopqapi.herokuapp.com/users/update/'+ getusername();
             axios.post(url,user)
             .then((res)=>{
                 swal({

@@ -13,7 +13,7 @@ const Store = () => {
     const [Product_data, setitem] = useState([]);
     useEffect(()=>{
         showLoading()
-      axios.get('http://localhost:8000/product/store/v/'+ id)
+      axios.get('https://shopqapi.herokuapp.com/product/store/v/'+ id)
             .then((res)=>{
                 //console.log(res1.data);
                 setitem(res.data);
@@ -28,7 +28,7 @@ const Store = () => {
                         icon: "error",
                     });
             })
-            axios.get('http://localhost:8000/seller/user/'+ getusername())
+            axios.get('https://shopqapi.herokuapp.com/seller/user/'+ getusername())
             .then((res)=>{
                 //console.log(res.data.store.storename);
                 setstorename(res.data.store.storename);

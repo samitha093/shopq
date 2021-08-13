@@ -24,7 +24,7 @@ export default function Products() {
           })
           .then((willDelete) => {
             if (willDelete) {
-                axios.delete('http://localhost:8000/product/'+productid)
+                axios.delete('https://shopqapi.herokuapp.com/product/'+productid)
                 .then((res)=>{
                     console.log(res);
                 })
@@ -101,11 +101,11 @@ export default function Products() {
     const [items, setitem] = useState([]);
     useEffect(()=>{
         showLoading();
-        axios.get('http://localhost:8000/seller/user/'+getusername())
+        axios.get('https://shopqapi.herokuapp.com/seller/user/'+getusername())
         .then((res)=>{
             //console.log(res.data.store);
             //setitem(res.data);
-            axios.get('http://localhost:8000/product/store/'+res.data.store.storeid)
+            axios.get('https://shopqapi.herokuapp.com/product/store/'+res.data.store.storeid)
             .then((res1)=>{
                 //console.log(res1.data);
                 setitem(res1.data);
@@ -149,11 +149,11 @@ export default function Products() {
       };
       async function refreshapi() {
         showLoading();
-        axios.get('http://localhost:8000/seller/user/'+getusername())
+        axios.get('https://shopqapi.herokuapp.com/seller/user/'+getusername())
         .then((res)=>{
             //console.log(res.data.store);
             //setitem(res.data);
-            axios.get('http://localhost:8000/product/store/'+res.data.store.storeid)
+            axios.get('https://shopqapi.herokuapp.com/product/store/'+res.data.store.storeid)
             .then((res1)=>{
                 //console.log(res1.data);
                 setitem(res1.data);

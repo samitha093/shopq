@@ -11,9 +11,9 @@ const Orders = () => {
     const [items, setitem] = useState([]);
     useEffect(()=>{
         showLoading();
-        axios.get('http://localhost:8000/seller/user/'+getusername())
+        axios.get('https://shopqapi.herokuapp.com/seller/user/'+getusername())
         .then((res)=>{
-            axios.get('http://localhost:8000/order/seller/'+ res.data.store.storeid)
+            axios.get('https://shopqapi.herokuapp.com/order/seller/'+ res.data.store.storeid)
                 .then((res)=>{
                     swal.close();
                     setitem(res.data.orders);
@@ -57,7 +57,7 @@ const Orders = () => {
     async function delivered_api(orderid){
         showLoading();
         
-        axios.get('http://localhost:8000/order/'+ orderid)
+        axios.get('https://shopqapi.herokuapp.com/order/'+ orderid)
             .then((res)=>{
                 swal.close();
                 const  order = {
@@ -75,7 +75,7 @@ const Orders = () => {
                         icon: "error",
                     });
                 }else{
-                    const url = 'http://localhost:8000/order/update/'+orderid;
+                    const url = 'https://shopqapi.herokuapp.com/order/update/'+orderid;
                     axios.post(url,order)
                     .then((res)=>{
                         swal.close();
@@ -85,9 +85,9 @@ const Orders = () => {
                             icon: "success",
                         })
                         .then((value) => {
-                            axios.get('http://localhost:8000/seller/user/'+getusername())
+                            axios.get('https://shopqapi.herokuapp.com/seller/user/'+getusername())
                             .then((res)=>{
-                                axios.get('http://localhost:8000/order/seller/'+ res.data.store.storeid)
+                                axios.get('https://shopqapi.herokuapp.com/order/seller/'+ res.data.store.storeid)
                                     .then((res)=>{
                                         swal.close();
                                         setitem(res.data.orders);

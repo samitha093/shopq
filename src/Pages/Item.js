@@ -14,11 +14,11 @@ const Item = (props) => {
     const [store, setstore] = useState([]);
     useEffect(()=>{
         showLoading();
-        axios.get('http://localhost:8000/product/'+id)
+        axios.get('https://shopqapi.herokuapp.com/product/'+id)
         .then((res)=>{
             setitem(res.data);
             //console.log(items.store);
-            axios.get('http://localhost:8000/seller/'+res.data.store)
+            axios.get('https://shopqapi.herokuapp.com/seller/'+res.data.store)
             .then((res)=>{
                 setstore(res.data.store);
                 //console.log(res.data.store);
@@ -112,7 +112,7 @@ const Item = (props) => {
                 status :items.status,
             }
             //console.log(items);
-            const url = 'http://localhost:8000/cart/add';
+            const url = 'https://shopqapi.herokuapp.com/cart/add';
             axios.post(url,cart)
                 .then((res)=>{
                     swal.close();
