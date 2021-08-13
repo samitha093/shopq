@@ -61,7 +61,7 @@ const Cart = () => {
     }
      const [items, setitem] = useState([]);
     useEffect(()=>{  
-        axios.get('https://shopqapi.herokuapp.com/cart/'+getusername())
+        axios.get('http://localhost:8000/cart/'+getusername())
         .then(async (res)=>{
             setitem(res.data);
         })
@@ -87,10 +87,10 @@ const Cart = () => {
           })
           .then((willDelete) => {
             if (willDelete) {
-                axios.delete('https://shopqapi.herokuapp.com/cart/'+productid)
+                axios.delete('http://localhost:8000/cart/'+productid)
                 .then((res)=>{
                    // console.log(res);
-                   axios.get('https://shopqapi.herokuapp.com/cart/'+getusername())
+                   axios.get('http://localhost:8000/cart/'+getusername())
                     .then(async (res)=>{
                         setitem(res.data);
                     })

@@ -30,7 +30,7 @@ const Createstore = () => {
         setmobile("");
         setaddress("");
         setprovince("");
-        const url = 'https://shopqapi.herokuapp.com/seller/add';
+        const url = 'http://localhost:8000/seller/add';
             axios.post(url,registerseller)
                 .then((res)=>{
                     swal.close();

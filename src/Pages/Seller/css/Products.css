@@ -79,3 +79,9 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.dashboard-edit{
   border-radius: 30px;
   color: white;
 }
+.refresh{
+  margin-left: 40px;
+  border: none;
+  background:none;
+  cursor: pointer;
+}

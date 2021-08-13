@@ -61,7 +61,7 @@ const Addnew = (props) => {
             setprice("");
             setqty("");
             setstatus("");
-            const url2 = 'https://shopqapi.herokuapp.com/product/update/' + props.id;
+            const url2 = 'http://localhost:8000/product/update/' + props.id;
             axios.post(url2,updatedata)
                 .then((res)=>{
                     swal({
@@ -78,7 +78,7 @@ const Addnew = (props) => {
                     });
                 })
         }else{
-            const url = 'https://shopqapi.herokuapp.com/seller/login';
+            const url = 'http://localhost:8000/seller/login';
             const useritem = {
                 storeuser : getusername()
             };
@@ -99,7 +99,7 @@ const Addnew = (props) => {
                     setprice("");
                     setqty("");
                     setstatus("");
-                    const url2 = 'https://shopqapi.herokuapp.com/product/add';
+                    const url2 = 'http://localhost:8000/product/add';
                     axios.post(url2,registerseller)
                         .then((res)=>{
                             swal({
@@ -133,7 +133,7 @@ const Addnew = (props) => {
         //console.log(props.id);
         //settitle(props.id);
         if(props.id){
-            axios.get('https://shopqapi.herokuapp.com/product/'+props.id)
+            axios.get('http://localhost:8000/product/'+props.id)
             .then((res)=>{
                 //console.log(res.data.title);
                 settitle(res.data.title);

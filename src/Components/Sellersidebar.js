@@ -11,6 +11,7 @@ import DashboardTwoToneIcon from '@material-ui/icons/DashboardTwoTone';
 import {useHistory} from 'react-router-dom';
 import {endsession, getusername} from '../Session/Session';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import PersonIcon from '@material-ui/icons/Person';
 
 const Sellersidebar = () => {
     const [items, setitem] = useState([]);
@@ -32,27 +33,14 @@ const Sellersidebar = () => {
 
     const history = useHistory();
     const username = getusername();
-    async function seller_dashboard(){
-        //console.log('dashbord-click');
-        let dashboard = document.getElementById('seller_dashboard-btn');
-        let products = document.getElementById('seller_products-btn');
-        let orders = document.getElementById('seller_orders-btn');
-        let shop = document.getElementById('seller_shop-btn');
-        let logout = document.getElementById('seller_logout-btn');
-        ReactDOM.findDOMNode(dashboard).style.background = 'rgb(247, 197, 91)';
-        ReactDOM.findDOMNode(products).style.background = 'rgb(255, 255, 255)';
-        ReactDOM.findDOMNode(orders).style.background = 'rgb(255, 255, 255)';
-        ReactDOM.findDOMNode(shop).style.background = 'rgb(255, 255, 255)';
-        ReactDOM.findDOMNode(logout).style.background = 'rgb(255, 255, 255)';
-        history.push("/seller/");
-    }
+    
     async function seller_products(){
-        let dashboard = document.getElementById('seller_dashboard-btn');
+        
         let products = document.getElementById('seller_products-btn');
         let orders = document.getElementById('seller_orders-btn');
         let shop = document.getElementById('seller_shop-btn');
         let logout = document.getElementById('seller_logout-btn');
-        ReactDOM.findDOMNode(dashboard).style.background = 'rgb(255, 255, 255)';
+        
         ReactDOM.findDOMNode(products).style.background = 'rgb(247, 197, 91)';
         ReactDOM.findDOMNode(orders).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(shop).style.background = 'rgb(255, 255, 255)';
@@ -60,12 +48,12 @@ const Sellersidebar = () => {
         history.push("/seller/products");
     }
     async function seller_orders(){
-        let dashboard = document.getElementById('seller_dashboard-btn');
+        
         let products = document.getElementById('seller_products-btn');
         let orders = document.getElementById('seller_orders-btn');
         let shop = document.getElementById('seller_shop-btn');
         let logout = document.getElementById('seller_logout-btn');
-        ReactDOM.findDOMNode(dashboard).style.background = 'rgb(255, 255, 255)';
+        
         ReactDOM.findDOMNode(products).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(orders).style.background = 'rgb(247, 197, 91)';
         ReactDOM.findDOMNode(shop).style.background = 'rgb(255, 255, 255)';
@@ -75,7 +63,7 @@ const Sellersidebar = () => {
     async function seller_shop(){
         showLoading();
         //console.log(getusername());
-        axios.get('https://shopqapi.herokuapp.com/seller/user/'+getusername())
+        axios.get('http://localhost:8000/seller/user/'+getusername())
         .then((res)=>{
             //console.log(res.data.store);
             history.push("/store/"+res.data.store.storeid);
@@ -98,13 +86,12 @@ const Sellersidebar = () => {
         endsession();
         history.push("/login");
     }
+    async function useraccount(){
+        history.push("/login");
+    }
     return (
         <div className="sidebar">
             <ul className="sidebar-list">
-                <li id="seller_dashboard-btn" className="listitem " onClick={seller_dashboard}>
-                    <DashboardTwoToneIcon className="listitem-icon"/>
-                    <br/>Dashboard
-                </li>
                 <li id="seller_products-btn" className="listitem" onClick={seller_products}>
                     <FastfoodTwoToneIcon className="listitem-icon"/>
                     <br/>Products
@@ -116,6 +103,10 @@ const Sellersidebar = () => {
                 <li id="seller_shop-btn" className="listitem" onClick={seller_shop}>
                     <StorefrontTwoToneIcon className="listitem-icon"/>
                     <br/>Shop
+                </li>
+                <li id="seller_shop-btn" className="listitem" onClick={useraccount}>
+                    <PersonIcon className="listitem-icon"/>
+                    <br/>My Account
                 </li>
                 <li id="seller_logout-btn" className="listitem" onClick={seller_logout}>
                     <ExitToAppTwoToneIcon className="listitem-icon"/>

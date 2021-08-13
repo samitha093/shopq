@@ -6,3 +6,22 @@
     -webkit-box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24); 
     box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24)
 }
+.user{
+    border-style: solid;
+    border-color: rgb(226, 226, 226);
+    padding:50px;
+    border-radius: 25px;
+}
+.seller{
+    margin-top: 50px;
+    border-style: solid;
+    border-color: rgb(226, 226, 226);
+    padding:50px;
+    border-radius: 25px;
+}
+.storeedit{
+    overflow: hidden;
+}
+.reset{
+    overflow: hidden;
+}

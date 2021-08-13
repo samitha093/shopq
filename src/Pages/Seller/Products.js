@@ -10,6 +10,7 @@ import axios from 'axios';
 import swal from '@sweetalert/with-react'
 import {getusername} from '../../Session/Session';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import CachedIcon from '@material-ui/icons/Cached';
 
 export default function Products() {
 
@@ -23,7 +24,7 @@ export default function Products() {
           })
           .then((willDelete) => {
             if (willDelete) {
-                axios.delete('https://shopqapi.herokuapp.com/product/'+productid)
+                axios.delete('http://localhost:8000/product/'+productid)
                 .then((res)=>{
                     console.log(res);
                 })
@@ -45,7 +46,7 @@ export default function Products() {
         { 
             field: 'img', 
             headerName: 'Photo', 
-            width: 150 ,
+            width: 100 ,
             renderCell : (params)=>{
                 return(
                     <div className="userlist">
@@ -57,23 +58,23 @@ export default function Products() {
         { 
             field: 'title',
             headerName: 'Title', 
-            width: 500 },
+            width: 200 },
         {
           field: 'price',
           headerName: 'Current price ($)',
-          width: 200,
+          width: 120,
         },
         {
             field: 'qty',
             headerName: 'Available quantity',
-            width: 200,
+            width: 120,
         },
         {
           field: 'status',
           headerName: 'Status',
           description: 'This column has a value getter and is not sortable.',
           sortable: false,
-          width: 160,
+          width: 130,
         },
         {
             field: 'action',
@@ -100,11 +101,11 @@ export default function Products() {
     const [items, setitem] = useState([]);
     useEffect(()=>{
         showLoading();
-        axios.get('https://shopqapi.herokuapp.com/seller/user/'+getusername())
+        axios.get('http://localhost:8000/seller/user/'+getusername())
         .then((res)=>{
             //console.log(res.data.store);
             //setitem(res.data);
-            axios.get('https://shopqapi.herokuapp.com/product/store/'+res.data.store.storeid)
+            axios.get('http://localhost:8000/product/store/'+res.data.store.storeid)
             .then((res1)=>{
                 //console.log(res1.data);
                 setitem(res1.data);
@@ -146,6 +147,38 @@ export default function Products() {
             )
           });
       };
+      async function refreshapi() {
+        showLoading();
+        axios.get('http://localhost:8000/seller/user/'+getusername())
+        .then((res)=>{
+            //console.log(res.data.store);
+            //setitem(res.data);
+            axios.get('http://localhost:8000/product/store/'+res.data.store.storeid)
+            .then((res1)=>{
+                //console.log(res1.data);
+                setitem(res1.data);
+                swal.close()
+            })
+            .catch((err1)=>{
+                console.log(err1);
+                swal.close();
+                    swal({
+                        title: "Something went to wrong!",
+                        text: "Please Try Again",
+                        icon: "error",
+                    });
+            })
+        })
+        .catch((err)=>{
+            console.log(err);
+            swal.close();
+                    swal({
+                        title: "Something went to wrong!",
+                        text: "Please Try Again",
+                        icon: "error",
+                    });
+        })
+      };
 
     return (
         <div className="seller-products">
@@ -157,6 +190,8 @@ export default function Products() {
                             <Addnew></Addnew>
                         </CustomizedDialogs>
                     </div>
+                    
+                    <button className="refresh" onClick={refreshapi}><CachedIcon/>   Refresh</button>
                 </div>
                 
                 <div style={{ height: 700, width: '100%' }}>

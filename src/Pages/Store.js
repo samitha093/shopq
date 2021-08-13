@@ -6,13 +6,14 @@ import '../Styles/Store.css';
 import axios from 'axios';
 import swal from '@sweetalert/with-react'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { getusername } from '../Session/Session';
 const Store = () => {
     const {id} = useParams()
-
+    const [storename, setstorename] = useState([]);
     const [Product_data, setitem] = useState([]);
     useEffect(()=>{
         showLoading()
-      axios.get('https://shopqapi.herokuapp.com/product/store/'+ id)
+      axios.get('http://localhost:8000/product/store/v/'+ id)
             .then((res)=>{
                 //console.log(res1.data);
                 setitem(res.data);
@@ -26,6 +27,11 @@ const Store = () => {
                         text: "Please Try Again",
                         icon: "error",
                     });
+            })
+            axios.get('http://localhost:8000/seller/user/'+ getusername())
+            .then((res)=>{
+                //console.log(res.data.store.storename);
+                setstorename(res.data.store.storename);
             })
     },[])
     
@@ -64,7 +70,7 @@ const Store = () => {
         <di>
             <div className="shop-head-container">
                 <div className="shop-head">
-                    <h1> {id}</h1>
+                    <h1> {storename}</h1>
                     <div>
                     <button className="item-shopbtn btn">Contact Seller</button>
                     </div>

@@ -11,7 +11,7 @@ const Seller = () => {
         <div className="seller-background">
             <Sellersidebar/>
             <Switch>
-                <Route path="/seller/" component={Dashboard} exact/>
+                <Route path="/seller/" component={Products} exact/>
                 <Route path="/seller/products" component={Products}/>
                 <Route path="/seller/orders" component={Orders}/>
             </Switch>

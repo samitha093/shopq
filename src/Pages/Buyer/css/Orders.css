@@ -6,3 +6,48 @@
     -webkit-box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24); 
     box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.24)
 }
+.order-card{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin: 10px;
+    padding: 0px 0px 0px;
+    border-radius: 10px;
+    cursor: pointer;
+    border-color: rgb(155, 155, 155);
+    border-width: 4px;
+    border-style:solid;
+    display: flex;
+}
+.order-card_img{
+    padding: 5px 20px 0px 5px;
+overflow: hidden;
+}
+.order-card_img_img{
+    width: 120px;
+    object-fit: cover;
+}
+.order-card_header{
+    width: 600px;
+    float: right;
+    overflow: hidden;
+    margin-top: 0px;
+}
+.order-card_status{
+    width: 150px;
+    float: right;
+    overflow: hidden;
+
+}
+.order-card_header-right{
+     display: flex;
+}
+.order-card_header-ttle{
+    font-size: 26px;
+    margin-bottom: 0px;
+}
+.order-card_head_title{
+    margin-bottom: 0px;
+}
+.order-card_head_price{
+    margin-right: 50px;
+}

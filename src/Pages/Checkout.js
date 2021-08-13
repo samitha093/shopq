@@ -13,11 +13,11 @@ const Checkout = (props) => {
     const[Amount,setamount] = useState(0);
     const history = useHistory();
     useEffect(()=>{
-        showLoading();
+        //showLoading();
         setitems(props.location.state);
             if(props.location.state.items.length === 1){
                 showLoading();
-                axios.get('https://shopqapi.herokuapp.com/product/'+props.location.state.items[0].productid)
+                axios.get('http://localhost:8000/product/'+props.location.state.items[0].productid)
                 .then((res)=>{
                     const data = {
                         id:res.data.id,
@@ -112,7 +112,8 @@ const Checkout = (props) => {
         }
     ];
     async function pay_api() {
-        showLoading();
+        //showLoading();
+        //console.log(Products.length);
         if(Products.length === 1){
             //console.log(Products[0]);
             const  item = {
@@ -137,14 +138,15 @@ const Checkout = (props) => {
                 address:Address
             }
             //console.log(order);
-            const url = 'https://shopqapi.herokuapp.com/order/add';
+            showLoading();
+            const url = 'http://localhost:8000/order/add';
             axios.post(url,order)
                 .then((res)=>{
                     if(checkoutproduct.items[0].id){
-                        axios.delete('https://shopqapi.herokuapp.com/cart/'+checkoutproduct.items[0].id);
+                        axios.delete('http://localhost:8000/cart/'+checkoutproduct.items[0].id);
                     }
 
-                    axios.get('https://shopqapi.herokuapp.com/product/'+Products[0].id)
+                    axios.get('http://localhost:8000/product/'+Products[0].id)
                         .then((res)=>{
                             //console.log(res.data)
                             const  itemupdate = {
@@ -155,7 +157,7 @@ const Checkout = (props) => {
                                 status:res.data.status,
                                 store: res.data.store,
                             }
-                            const url = 'https://shopqapi.herokuapp.com/product/update/'+ Products[0].id;
+                            const url = 'http://localhost:8000/product/update/'+ Products[0].id;
                             axios.post(url,itemupdate)
                             .then((res)=>{
                                 swal.close();
@@ -183,15 +185,16 @@ const Checkout = (props) => {
                 setCity("");
                 setDistrict("");  
         }else{
-            swal.close();
+            //swal.close();
             swal({
                 title: "Something went to wrong!",
                 text: "Please try again later",
                 icon: "error",
             });
         }
+        //swal.close();
             
-            // axios.delete('http://localhost:5000/cart/'+checkoutproduct.);       
+            // axios.delete('http://localhost:8000/cart/'+checkoutproduct.);       
     }
     const [name, setName] = useState("");
     const [street, setStreet] = useState("");

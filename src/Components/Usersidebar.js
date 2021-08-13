@@ -17,12 +17,10 @@ const Usersidebar = () => {
         //console.log('dashbord-click');
         let dashboard = document.getElementById('seller_dashboard-btn');
         let products = document.getElementById('seller_products-btn');
-        let orders = document.getElementById('seller_orders-btn');
         let shop = document.getElementById('seller_shop-btn');
         let logout = document.getElementById('seller_logout-btn');
         ReactDOM.findDOMNode(dashboard).style.background = 'rgb(247, 197, 91)';
         ReactDOM.findDOMNode(products).style.background = 'rgb(255, 255, 255)';
-        ReactDOM.findDOMNode(orders).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(shop).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(logout).style.background = 'rgb(255, 255, 255)';
         history.push("/user/");
@@ -30,12 +28,10 @@ const Usersidebar = () => {
     async function seller_products(){
         let dashboard = document.getElementById('seller_dashboard-btn');
         let products = document.getElementById('seller_products-btn');
-        let orders = document.getElementById('seller_orders-btn');
         let shop = document.getElementById('seller_shop-btn');
         let logout = document.getElementById('seller_logout-btn');
         ReactDOM.findDOMNode(dashboard).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(products).style.background = 'rgb(247, 197, 91)';
-        ReactDOM.findDOMNode(orders).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(shop).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(logout).style.background = 'rgb(255, 255, 255)';
         history.push("/user/account");
@@ -43,12 +39,10 @@ const Usersidebar = () => {
     async function seller_orders(){
         let dashboard = document.getElementById('seller_dashboard-btn');
         let products = document.getElementById('seller_products-btn');
-        let orders = document.getElementById('seller_orders-btn');
         let shop = document.getElementById('seller_shop-btn');
         let logout = document.getElementById('seller_logout-btn');
         ReactDOM.findDOMNode(dashboard).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(products).style.background = 'rgb(255, 255, 255)';
-        ReactDOM.findDOMNode(orders).style.background = 'rgb(247, 197, 91)';
         ReactDOM.findDOMNode(shop).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(logout).style.background = 'rgb(255, 255, 255)';
         history.push("/user/address");
@@ -57,19 +51,17 @@ const Usersidebar = () => {
         showLoading()
         let dashboard = document.getElementById('seller_dashboard-btn');
         let products = document.getElementById('seller_products-btn');
-        let orders = document.getElementById('seller_orders-btn');
         let shop = document.getElementById('seller_shop-btn');
         let logout = document.getElementById('seller_logout-btn');
         ReactDOM.findDOMNode(dashboard).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(products).style.background = 'rgb(255, 255, 255)';
-        ReactDOM.findDOMNode(orders).style.background = 'rgb(255, 255, 255)';
         ReactDOM.findDOMNode(shop).style.background = 'rgb(247, 197, 91)';
         ReactDOM.findDOMNode(logout).style.background = 'rgb(255, 255, 255)';
         const getsellerstore = {
             storeuser : getusername()
         };
         console.log(getsellerstore)
-        const url = 'https://shopqapi.herokuapp.com/seller/login';
+        const url = 'http://localhost:8000/seller/login';
         axios.post(url,getsellerstore)
             .then((res)=>{
                 swal.close();
@@ -110,10 +102,7 @@ const Usersidebar = () => {
                     <SettingsIcon className="listitem-icon"/>
                     <br/>Account
                 </li>
-                <li id="seller_orders-btn" className="listitem" onClick={seller_orders}>
-                    <RoomIcon className="listitem-icon"/>
-                    <br/>Address
-                </li>
+            
                 <li id="seller_shop-btn" className="listitem" onClick={seller_shop}>
                     <AddShoppingCartIcon className="listitem-icon"/>
                     <br/>Sell
