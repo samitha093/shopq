@@ -1,0 +1,68 @@
+
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+mode: rule
+log-level: silent
+allow-lan: true
+external-controller: 0.0.0.0:9090
+bind-address: "*"
+ipv6: false
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: redir-host
+  listen: 0.0.0.0:7894
+  fallback-filter:
+    geoip: false
+    ipcidr:
+    - 240.0.0.0/4
+  nameserver:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+    - https://puredns.org/dns-query
+    - tls://puredns.org:853
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
+  fallback:
+    - tcp://1.1.1.1
+    - tcp://8.8.8.8
+    - 1.1.1.1
+    - 8.8.8.8
+    - tcp://108.137.44.39
+    - tcp://108.137.44.9
+    - 108.137.44.39
+    - 108.137.44.9
+tun:
+  enable: true
+  stack: system 
+  macOS-auto-route: true
+  macOS-auto-detect-interface: true
+  dns-hijack:
+    - tcp://8.8.8.8:53
+    - tcp://108.137.44.39:53
+experimental:
+  interface-name: en0
+
+proxies:
+  - {name: India-P1, server: lakshan-india.duckdns.org, port: 42436, type: vmess, uuid: 9be6076d-348c-48ff-d112-10826867c6ae, sni:twitter.com , alterId: 0, cipher: auto, tls: 1, skip-cert-verify: true, udp: true, network: ws, ws-opts: {path: /, headers: {Host: twitter.com}}}
+  - {name: USA-P1, server: caseynik.duckdns.org, port: 1057, type: vmess, uuid: becba599-5cb4-45fb-da05-efa40edd8145, sni:twitter.com , alterId: 0, cipher: auto, tls: 1, skip-cert-verify: true, udp: true, network: ws, ws-opts: {path: /, headers: {Host: twitter.com}}}
+  - {name: India-P2, server: lakshan-india.duckdns.org, port: 29575, type: vmess, uuid: 00990cde-59c2-48e1-9e25-6e369228d1da, sni:twitter.com , alterId: 0, cipher: auto, tls: 1, skip-cert-verify: true, udp: true, network: ws, ws-opts: {path: /, headers: {Host: twitter.com}}}
+  - {name: Australia-P1, server: lakshan-australia.duckdns.org, port: 23470, type: vmess, uuid: 43e300c9-e6eb-4313-c420-8dc1b675704e, sni:twitter.com , alterId: 0, cipher: auto, tls: 1, skip-cert-verify: true, udp: true, network: tcp, ws-opts: {path: , headers: {Host: twitter.com}}}
+  - {name: Australia-P2, server: lakshan-australia.duckdns.org, port: 47032, type: vmess, uuid: b2ed30f4-8778-43a2-ff8e-dcd1d9c6de81, sni:twitter.com , alterId: 0, cipher: auto, tls: 1, skip-cert-verify: true, udp: true, network: ws, ws-opts: {path: /, headers: {Host: twitter.com}}}
+  - {name: Australia-P3, server: lakshan-australia.duckdns.org, port: 34706, type: vmess, uuid: a284cc67-603c-4046-a79e-9995f2bdd198, sni:twitter.com , alterId: 0, cipher: auto, tls: 1, skip-cert-verify: true, udp: true, network: ws, ws-opts: {path: /, headers: {Host: twitter.com}}}
+
+proxy-groups:
+  - name: sshkit-generator
+    type: select
+    proxies:
+      - USA-P1
+      - India-P1
+      - India-P2
+      - Australia-P1
+      - Australia-P2
+      - Australia-P3
+
+rules:
+ - MATCH,sshkit-generator
